@@ -1,0 +1,25 @@
+{
+  "name": "firebaseplayground",
+  "version": "1.0.0",
+  "description": "firebase spike",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandley/firebasePlayground.git"
+  },
+  "keywords": [
+    "firebase"
+  ],
+  "author": "chandley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandley/firebasePlayground/issues"
+  },
+  "homepage": "https://github.com/chandley/firebasePlayground#readme",
+  "dependencies": {
+    "firebase-admin": "^5.8.2"
+  }
+}
