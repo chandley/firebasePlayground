@@ -36,19 +36,19 @@ contentRef.set({
         headline: "Elvis died",
         body: "bad diet blamed",
         publishDate: "17 August 1977",
-        mmgId: "123"
+        mmgId: "elvis"
     },
     trump: {
         headline: "Trump elected",
         body: "poll was close",
         publishDate: "28 November 2016",
-        mmgId: "456"
+        mmgId: "trump"
     },
-    hayes: {
+    libor: {
         headline: "Rain man convicted for LIBOR fraud",
         body: "gave full confession, then retracted it",
         publishDate: "13 September 2015",
-        mmgId: "789"
+        mmgId: "libor"
     }
 });
 
@@ -57,21 +57,21 @@ matchRef.set({
     firstEmail: {
         firstMatch: {
             profileId: "abc",
-            contentMmgId: "123"
+            contentMmgId: "elvis"
         },
         secondMatch: {
             profileId: "abc",
-            contentMmgId: "456"
+            contentMmgId: "trump"
         }
     },
     secondEmail: {
         firstMatch: {
             profileId: "def",
-            contentMmgId: "123"
+            contentMmgId: "elvis"
         },
         secondMatch: {
             profileId: "def",
-            contentMmgId: "789"
+            contentMmgId: "libor"
         }
     }
 });
@@ -106,3 +106,16 @@ matchQuery.once("value", function(snapshot) {
     console.log('getting match data from firebase');
     console.log(snapshot.val());
 });
+
+matchQuery.once("value", function(snapshot) {
+    firstList = matches.child('secondEmail');
+    console.log('getting first list data from firebase');
+
+    firstList.on('child_added', snap => {
+        const story = ref.child('stories/' + snap.child("contentMmgId").val());
+        story.once("value", function(storySnap) {
+            console.log(storySnap.val());
+        })
+    })
+});
+
